@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paint Catppuccin by arsbyte">
+    <title>Paint | by arsbyte</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="header">
+            <h1>Paint</h1>
+            <span class="author">by arsbyte</span>
+        </div>
+
+        <div class="section">
+            <h3>Herramientas</h3>
+            <div class="tools-grid">
+                <button class="tool-btn active" id="btn-brush" onclick="app.setTool('brush')">
+                    🖌️ Pincel
+                </button>
+                <button class="tool-btn" id="btn-bucket" onclick="app.setTool('bucket')">
+                    🪣 Relleno
+                </button>
+                <button class="tool-btn" id="btn-eraser" onclick="app.setTool('eraser')">
+                    🧼 Borrador
+                </button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h3>Paleta</h3>
+            <div class="color-grid" id="preset-colors"></div>
+            
+            <div class="rgb-wrapper" onclick="document.getElementById('color-picker').click()">
+                <input type="color" id="color-picker" value="#11111b" onchange="app.setColor(this.value)">
+                <span>Selector RGB</span>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h3>Tamaño: <span id="size-val">5</span>px</h3>
+            <div class="size-control">
+                <input type="range" min="1" max="50" value="5" oninput="app.setSize(this.value)">
+            </div>
+        </div>
+
+        <div class="action-group">
+            <button class="btn-action btn-undo" onclick="app.undo()">
+                ↩️ Deshacer
+            </button>
+            <button class="btn-action btn-save" onclick="app.saveCanvas()">
+                💾 Guardar
+            </button>
+            <button class="btn-action btn-clear" onclick="app.clearCanvas()">
+                🗑️ Limpiar
+            </button>
+        </div>
+        
+        <div class="footer-credits">
+            © 2025 arsbyte
+        </div>
+    </aside>
+
+    <main class="canvas-area" id="canvas-wrapper">
+        <canvas id="main-canvas"></canvas>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
