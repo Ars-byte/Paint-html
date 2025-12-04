@@ -1,0 +1,131 @@
+/* --- TEMA CATPPUCCIN MOCHA --- */
+:root {
+    --base: #1e1e2e;
+    --mantle: #181825;
+    --surface0: #313244;
+    --surface1: #45475a;
+    --text: #cdd6f4;
+    --subtext: #a6adc8;
+    --lavender: #b4befe;
+    --red: #f38ba8;
+    --green: #a6e3a1;
+    --yellow: #f9e2af;
+    --canvas-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--base);
+    color: var(--text);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 280px;
+    background-color: var(--mantle);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.header { text-align: center; margin-bottom: 5px; }
+h1 { font-size: 1.6rem; color: var(--lavender); font-weight: 800; letter-spacing: -0.5px; }
+.author { font-size: 0.85rem; color: var(--subtext); opacity: 0.7; display: block; }
+h3 { font-size: 0.8rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+
+hr { border: 0; height: 1px; background: var(--surface0); margin: 5px 0; }
+
+/* --- BOTONES Y HERRAMIENTAS --- */
+.tools-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+
+button.tool-btn {
+    background-color: var(--surface0);
+    color: var(--text);
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: left;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+button.tool-btn:hover { background-color: var(--surface1); transform: translateX(2px); }
+button.tool-btn.active { background-color: var(--lavender); color: var(--base); box-shadow: 0 4px 12px rgba(180, 190, 254, 0.3); }
+
+/* --- PALETA --- */
+.color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 10px; }
+.color-dot {
+    width: 100%; aspect-ratio: 1; border-radius: 50%;
+    cursor: pointer; border: 2px solid transparent; transition: transform 0.2s;
+}
+.color-dot:hover { transform: scale(1.15); }
+.color-dot.active { border-color: var(--text); transform: scale(1.1); }
+
+.rgb-wrapper {
+    background-color: var(--surface0); padding: 8px; border-radius: 8px;
+    display: flex; align-items: center; gap: 10px; cursor: pointer;
+}
+input[type="color"] {
+    -webkit-appearance: none; border: none; width: 30px; height: 30px;
+    border-radius: 50%; overflow: hidden; background: none; cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+input[type="color"]::-webkit-color-swatch { border: none; border-radius: 50%; }
+
+/* --- SLIDER --- */
+.size-control { background: var(--surface0); padding: 10px; border-radius: 8px; }
+input[type="range"] {
+    width: 100%; height: 6px; background: var(--surface1); border-radius: 5px;
+    outline: none; -webkit-appearance: none; cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--lavender); cursor: pointer; transition: transform 0.1s;
+}
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+/* --- ACCIONES --- */
+.action-group { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+.btn-action {
+    border: none; padding: 12px; border-radius: 8px; font-weight: bold;
+    cursor: pointer; transition: 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px;
+}
+.btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.btn-undo { background-color: var(--yellow); color: var(--mantle); } /* Nuevo estilo undo */
+.btn-save { background-color: var(--green); color: var(--mantle); }
+.btn-clear { background-color: var(--red); color: var(--mantle); }
+
+.footer-credits { text-align: center; font-size: 0.75rem; color: var(--surface1); margin-top: 5px; font-weight: 500; }
+
+/* --- CANVAS --- */
+.canvas-area {
+    flex-grow: 1; background-color: var(--base);
+    background-image: radial-gradient(var(--surface0) 1px, transparent 1px);
+    background-size: 20px 20px;
+    display: flex; justify-content: center; align-items: center; padding: 30px;
+}
+
+canvas {
+    background-color: var(--canvas-bg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-radius: 8px; cursor: crosshair;
+}
